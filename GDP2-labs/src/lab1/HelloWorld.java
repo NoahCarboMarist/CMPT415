@@ -1,7 +1,7 @@
 /**
  * Title: Lab1
  * Author: Noah Carbo
- * 
+ *
  */
 
 package lab1;

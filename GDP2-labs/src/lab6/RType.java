@@ -1,7 +1,6 @@
-package lab5;
+package lab6;
 
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 
 @SuppressWarnings("serial")
 public class RType extends JFrame {
@@ -10,7 +9,7 @@ public class RType extends JFrame {
 
         add(new Board());
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
         setLocationRelativeTo(null);
         setTitle("R - Type");

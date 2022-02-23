@@ -1,4 +1,4 @@
-package lab2; 
+package lab2;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ import java.util.Arrays;
 public class InitArray {
 
     public static void main(String[] args) {
-        
+
         int[] a = new int[6];
 
         a[1] = 1;
@@ -16,7 +16,7 @@ public class InitArray {
         a[4] = 4;
         a[5] = 5;
 
-        System.out.println(Arrays.toString(a));    
-        
+        System.out.println(Arrays.toString(a));
+
     }
 }

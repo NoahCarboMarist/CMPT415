@@ -1,6 +1,7 @@
 package lab4.a1SwingTimer;
 
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 @SuppressWarnings("serial")
 public class Star extends JFrame {
@@ -9,7 +10,7 @@ public class Star extends JFrame {
 
         add(new Board());
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(280, 240);
         setLocationRelativeTo(null);
         setTitle("Star");

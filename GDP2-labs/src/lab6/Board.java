@@ -1,4 +1,4 @@
-package lab5;
+package lab6;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -9,11 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "rawtypes"})
 public class Board extends JPanel implements ActionListener {
 
     private Timer timer;
@@ -27,47 +29,53 @@ public class Board extends JPanel implements ActionListener {
         setDoubleBuffered(true);
 
         craft = new Craft();
-        craft.boardH = getHeight();
-        craft.boardW = getWidth();
+
         timer = new Timer(5, this);
         timer.start();
-        
     }
 
 
-    @Override
-	public void paint(Graphics g) {
+    public void paint(Graphics g) {
         super.paint(g);
 
         Graphics2D g2d = (Graphics2D)g;
         g2d.drawImage(craft.getImage(), craft.getX(), craft.getY(), this);
+
+        ArrayList ms = craft.getMissiles();
+
+        for (int i = 0; i < ms.size(); i++ ) {
+            Missile m = (Missile) ms.get(i);
+            g2d.drawImage(m.getImage(), m.getX(), m.getY(), this);
+        }
 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
 
 
-    @Override
-	public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
+        ArrayList ms = craft.getMissiles();
+
+        for (int i = 0; i < ms.size(); i++) {
+            Missile m = (Missile) ms.get(i);
+            if (m.isVisible()) 
+                m.move();
+            else ms.remove(i);
+        }
+
         craft.move();
-        repaint();
+        repaint();  
     }
 
-    public Board getBoard() {
-    	return this;
-    }
-    
+
     private class TAdapter extends KeyAdapter {
 
-        @Override
-		public void keyReleased(KeyEvent e) {
+        public void keyReleased(KeyEvent e) {
             craft.keyReleased(e);
         }
 
-        @Override
-		public void keyPressed(KeyEvent e) {
+        public void keyPressed(KeyEvent e) {
             craft.keyPressed(e);
         }
     }
-
 }
